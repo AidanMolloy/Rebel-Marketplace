@@ -80,7 +80,7 @@ def catalog():
 @app.route("/register/", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
-    if request.method == "POST" and form.validate_on_submit():
+    if form.validate_on_submit():
         return f"Account created for {form.company.data}!"
 
     return render_template("register.html", title="Register", form=form)

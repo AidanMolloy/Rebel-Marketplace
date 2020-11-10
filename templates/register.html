@@ -8,78 +8,72 @@
               <div>
               <!-- havent added any class but you have to do it this way for flask -->
                 {{ form.company.label(class="token-class")}}
+
                 {% if form.company.errors %}
                   {{ form.company(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.company.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.company(class="token-class")}}
                 {% endif %}
               </div>
               <div>
                 {{ form.email.label(class="token-class")}}
+
                   {% if form.email.errors %}
                     {{ form.email(class="token-class")}}
-                    <div class="invalid-feedback">
                       {% for error in form.email.errors %}
-                        <span>{{ error }}</span>
+                        <span class="invalid-input">{{ error }}</span>
                       {% endfor %}
-                    </div>
                   {% else %}
                     {{ form.email(class="token-class")}}
                   {% endif %}
               </div>
               <div>
                 {{ form.password.label(class="token-class")}}
+
                 {% if form.password.errors %}
                   {{ form.password(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.password.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.password(class="token-class")}}
                 {% endif %}
               </div>
               <div>
                 {{ form.confirm_password.label(class="token-class")}}
+
                 {% if form.confirm_password.errors %}
                   {{ form.confirm_password(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.confirm_password.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.confirm_password(class="token-class")}}
                 {% endif %}
               </div>
               <div>
                 {{ form.address1.label(class="token-class")}}
+
                 {% if form.address1.errors %}
                   {{ form.address1(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.address1.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.address1(class="token-class")}}
                 {% endif %}
               </div>
               <div>
                 {{ form.address2.label(class="token-class")}}
+
                 {% if form.address2.errors %}
                   {{ form.address2(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.address2.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.address2(class="token-class")}}
                 {% endif %}
@@ -88,11 +82,9 @@
                 {{ form.county.label(class="token-class")}}
                 {% if form.county.errors %}
                   {{ form.county(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.county.errors %}
                       <span>{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.county(class="token-class")}}
                 {% endif %}
@@ -101,11 +93,9 @@
                 {{ form.eircode.label(class="token-class")}}
                 {% if form.eircode.errors %}
                   {{ form.eircode(class="token-class invalid")}}
-                  <div class="invalid-feedback">
                     {% for error in form.eircode.errors %}
-                      <span>{{ error }}</span> 
+                      <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
-                  </div>
                 {% else %}
                   {{ form.eircode(class="token-class")}}
                 {% endif %}

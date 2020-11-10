@@ -92,3 +92,8 @@ nav li a:hover {
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.invalid-input {
+    color:red;
+    font-size: small¸;
+}

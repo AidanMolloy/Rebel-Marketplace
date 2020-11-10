@@ -1,9 +1,50 @@
 from flask import Flask,  render_template, url_for, request, flash
 from forms import RegistrationForm, LoginForm
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "0748d28ecb03830a0acae6d1886c55ed"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+db = SQLAlchemy(app)
 
+# c1 = Company(name="t", email="t", password="t", address1="t", address2="t", county="t", eircode="t")
+
+class Company(db.Model):
+    id =db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(30), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+    address1 = db.Column(db.String(30), nullable=False)
+    address2 = db.Column(db.String(30), nullable=False)
+    county = db.Column(db.String(30), nullable=False)
+    eircode = db.Column(db.String(30), unique=True, nullable=False)
+
+    products = db.relationship("Product", backref="company", lazy=True)
+
+    def __repr__(self):
+        return "Company('{}', '{}', '{}', '{}')".format(self.name, 
+                                                    self.email,
+                                                    self.county,
+                                                    self.eircode
+                                                )
+
+class Product(db.Model):
+    id =db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Integer, nullable=False) # come back to min values
+    quantity = db.Column(db.Integer, nullable=False) # come back to min values
+    company_id = db.Column(db.Integer, db.ForeignKey("company.id"), nullable=False)
+    
+    def __repr__(self):
+        return "Product('{}'. '{}'. '{}'. '{}')".format(self.name, 
+                                                    self.description,
+                                                    self.price,
+                                                    self.quantity,
+                                                    self.company
+                                                )
+
+ 
 products = [
     {
         "id": 0,

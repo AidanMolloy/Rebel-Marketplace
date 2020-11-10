@@ -5,8 +5,6 @@ The introduction of covid-19 in our lives has highlighted the importance of comm
 
 ## Authors:
 - [Aidan Molloy](https://github.com/AidanMolloy)
-<<<<<<< HEAD
 - [Adam Purcell](https://github.com/ap7t)
-=======
 - [Fiona Cremins](https://github.com/fionacremins)
->>>>>>> d5484c3cb5306ffa2257057a0f1c1e657a5c6f92
+

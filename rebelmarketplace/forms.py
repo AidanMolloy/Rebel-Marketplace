@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional
 
-from counties import counties
+from rebelmarketplace.counties import counties 
 
 class RegistrationForm(FlaskForm):
 

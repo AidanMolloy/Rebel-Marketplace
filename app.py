@@ -122,7 +122,7 @@ def catalog():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        return f"Account created for {form.company.data}!"
+        return "Account created for %s!" % (form.company.data)
 
     return render_template("register.html", title="Register", form=form)
 

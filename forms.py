@@ -17,7 +17,7 @@ class RegistrationForm(FlaskForm):
     address2 = StringField("Address line 2", validators=[Optional(), Length(min=2, max=30)])                        
     county = SelectField('County *', 
                         choices=counties,
-                        validators=[DataRequired(),Length(min=2, max=30)])
+                        validators=[DataRequired()])
 
     # could check for valid eircode or even use the eircode to query for addess?
     # maybe even check from eircode then ask user is this the address and let them adjust accordingly

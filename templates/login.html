@@ -1,4 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Login Page</h1>
+<h1>Login Page</h1>
+<div>
+    <form method="POST", action="", class="register-form">
+        {{ form.hidden_tag() }} 
+        <div>
+            <div>
+            {{ form.email.label(class="token-class")}}
+                {% if form.email.errors %}
+                {{ form.email(class="token-class")}}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="token-class")}}
+                {% endif %}
+            </div>
+            <div>
+            {{ form.password.label(class="token-class")}}
+            {% if form.password.errors %}
+                {{ form.password(class="token-class invalid")}}
+                <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span> 
+                {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class="token-class")}}
+            {% endif %}
+            </div>
+        <div>
+        {{ form.submit }}
+        </div>
+    </form>
+</div>
 {% endblock content %}

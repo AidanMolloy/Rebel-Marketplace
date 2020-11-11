@@ -6,7 +6,8 @@ class Company(db.Model):
     email = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     address1 = db.Column(db.String(30), nullable=False)
-    address2 = db.Column(db.String(30), nullable=False)
+    address2 = db.Column(db.String(30), nullable=True)
+    address3 = db.Column(db.String(30), nullable=True)
     county = db.Column(db.String(30), nullable=False)
     eircode = db.Column(db.String(30), unique=True, nullable=False)
 

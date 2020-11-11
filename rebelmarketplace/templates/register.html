@@ -79,6 +79,18 @@
                 {% endif %}
               </div>
               <div>
+                {{ form.address3.label(class="token-class")}}
+
+                {% if form.address3.errors %}
+                  {{ form.address3(class="token-class")}}
+                    {% for error in form.address3.errors %}
+                      <span class="invalid-input">{{ error }}</span> 
+                    {% endfor %}
+                {% else %}
+                  {{ form.address3(class="token-class")}}
+                {% endif %}
+              </div>
+              <div>
                 {{ form.county.label(class="token-class")}}
                 {{ form.county(class="token-class")}}
               </div>

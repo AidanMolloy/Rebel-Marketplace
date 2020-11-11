@@ -1,6 +1,7 @@
-from flask import render_template, url_for, request
+from flask import render_template, url_for, request, flash, redirect
+from rebelmarketplace import app, db, bcyrpt
 from rebelmarketplace.forms import RegistrationForm, LoginForm
-from rebelmarketplace import app
+from rebelmarketplace.models import Company, Product
 
 products = [
     {
@@ -79,7 +80,15 @@ def catalog():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        return "Account created for %s!" % (form.company.data)
+        hashed_password = bcyrpt.generate_password_hash(form.password.data).decode("utf-8")
+        company = Company(name=form.company.data, email=form.email.data, 
+                        password=hashed_password, address1=form.address1.data, 
+                        address2=form.address2.data, county=form.county.data, 
+                        eircode=form.eircode.data)
+        db.session.add(company)
+        db.session.commit()
+        flash("Your account has been created! You can now log in!", "info") # this isnt working
+        return redirect(url_for("login"))
 
     return render_template("register.html", title="Register", form=form)
 

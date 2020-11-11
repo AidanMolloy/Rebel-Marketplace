@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional
-
+from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, ValidationError
+from rebelmarketplace.models import Company
 from rebelmarketplace.counties import counties 
 
 class RegistrationForm(FlaskForm):
@@ -15,6 +15,7 @@ class RegistrationForm(FlaskForm):
     address1 = StringField('Address *', 
                         validators=[DataRequired(),Length(min=2, max=30)])
     address2 = StringField("Address line 2", validators=[Optional(), Length(min=2, max=30)])                        
+    address3 = StringField("Address line 3", validators=[Optional(), Length(min=2, max=30)])                        
     county = SelectField('County *', 
                         choices=counties,
                         validators=[DataRequired()])
@@ -26,6 +27,17 @@ class RegistrationForm(FlaskForm):
 
 
     submit = SubmitField("Register Now!")
+
+    def validate_email(self, email):
+        company = Company.query.filter_by(email=email.data).first()
+        if company:
+            raise ValidationError("An account already exists for that email")
+
+    def validate_eircode(self, eircode):
+        company = Company.query.filter_by(eircode=eircode.data).first()
+        if company:
+            raise ValidationError("Another company is already using this Eircode")
+
 
 
 class LoginForm(FlaskForm):

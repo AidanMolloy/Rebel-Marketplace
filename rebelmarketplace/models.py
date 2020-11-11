@@ -1,6 +1,11 @@
-from rebelmarketplace import db
+from rebelmarketplace import db, login_manager
+from flask_login import UserMixin
 
-class Company(db.Model):
+@login_manager.user_loader
+def load_user(company_id):
+    return Company.query.get(int(company_id))
+
+class Company(db.Model, UserMixin):
     id =db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(30), unique=True, nullable=False)

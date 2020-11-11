@@ -31,8 +31,15 @@
                 {{ form.password(class="token-class")}}
             {% endif %}
             </div>
+            <div>
+                {{ form.remember(class="token-class")}}
+                {{ form.remember.label(class="token-class")}}
+            </div>
         <div>
         {{ form.submit }}
+        </div>
+        <div>
+            <a href="#">Forgot password</a>
         </div>
     </form>
 </div>

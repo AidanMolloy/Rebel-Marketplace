@@ -125,3 +125,14 @@ def logout():
 def account():
     products = current_user.products
     return render_template("account.html", title="Your Account", products=products)
+
+@app.route("/buy/<int:product_id>/", methods=["POST"])
+def buy(product_id):
+    product = Product.query.get(product_id)
+    if product.quantity > 0:
+        product.quantity -= 1
+    db.session.commit()
+    
+    company = product.company
+    return render_template("thanks.html", title="Thanks", company=company)
+

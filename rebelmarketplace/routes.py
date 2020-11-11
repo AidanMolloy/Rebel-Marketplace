@@ -1,61 +1,9 @@
-from flask import render_template, url_for, request, flash, redirect
+from flask import render_template, url_for, request, flash, redirect, abort
 from rebelmarketplace import app, db, bcyrpt
-from rebelmarketplace.forms import RegistrationForm, LoginForm
+from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm
 from rebelmarketplace.models import Company, Product
 from flask_login import login_user, current_user, logout_user, login_required
 
-products = [
-    {
-        "id": 0,
-        "name": "Sample product 1",
-        "company": "Sample Company 1",
-        "price": 20,
-    },
-    {
-        "id": 1,
-        "name": "Sample product 2",
-        "company": "Sample Company 2",
-        "price": 69,
-    },
-    {
-        "id": 2,
-        "name": "Sample product 3",
-        "company": "Sample Company 3",
-        "price": 420,
-    },
-    {
-        "id": 3,
-        "name": "Sample product 4",
-        "company": "Sample Company 4",
-        "price": 50,
-    },
-    {
-        "id": 4,
-        "name": "Sample product 5",
-        "company": "Sample Company 5",
-        "price": 20,
-    },
-    {
-        "id": 5,
-        "name": "Sample product 6",
-        "company": "Sample Company 6",
-        "price": 69,
-    },
-    {
-        "id": 6,
-        "name": "Sample product 7",
-        "company": "Sample Company 7",
-        "price": 420,
-    },
-    {
-        "id": 7,
-        "name": "Sample product 8",
-        "company": "Sample Company 8",
-        "price": 50,
-    }
-]
-
-  
 
 @app.route("/")
 def home():
@@ -69,13 +17,69 @@ def about():
 def contact():
     return render_template("contact.html", title="Contact")
 
-@app.route("/product/<int:pid>")
-def product(pid):
-    return render_template("products.html", product=products[pid])
+@app.route("/product/<int:product_id>/")
+def product(product_id):
+    product = Product.query.get_or_404(product_id)
+    return render_template("product.html", title=product.name, product=product)
+
+@app.route("/product/new/", methods=["GET", "POST"])
+@login_required
+def new_product(): 
+    form = ProductForm()
+    if form.validate_on_submit():
+        post = Product(name=form.name.data, description=form.description.data,
+                    price=form.price.data, quantity=form.quantity.data, company=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash("Product added successfully", "success")
+        return redirect(url_for("account"))
+    return render_template("create_product.html", title="New Product", form=form)
+
+@app.route("/product/<int:product_id>/update/", methods=["GET", "POST"])
+@login_required
+def update_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    if product.company != current_user:
+        abort(403)
+    form = ProductForm()
+    if form.validate_on_submit():
+        product.name = form.name.data
+        product.description = form.description.data
+        product.price = form.price.data
+        product.quantity = form.quantity.data
+        db.session.commit()
+        flash("Your product has been updated", "success")
+        return redirect(url_for("product", product_id=product.id))
+    elif request.method == "GET":        
+            form.name.data = product.name
+            form.description.data = product.description
+            form.price.data = product.price
+            form.quantity.data = product.quantity
+    return render_template("create_product.html", title="Update Product", form=form)   
+
+@app.route("/product/<int:product_id>/delete/", methods=["POST"])
+@login_required
+def delete_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    if product.company != current_user:
+        abort(403)
+    db.session.delete(product)
+    db.session.commit()
+    flash("Your product has been deleted")
+    return redirect(url_for("company", company_id=current_user.id))
+
 
 @app.route("/catalog/")
 def catalog():
+    products = Product.query.all()
+    
     return render_template("catalog.html", products=products)
+
+@app.route("/company/<int:company_id>")
+def company(company_id):
+    company = Company.query.get_or_404(company_id)
+    products = company.products
+    return render_template("company.html", products=products)
 
 @app.route("/register/", methods=["GET", "POST"])
 def register():
@@ -84,7 +88,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcyrpt.generate_password_hash(form.password.data).decode("utf-8")
-        company = Company(name=form.company.data, email=form.email.data, 
+        company = Company(name=form.name.data, email=form.email.data, 
                         password=hashed_password, address1=form.address1.data, 
                         address2=form.address2.data, county=form.county.data, 
                         eircode=form.eircode.data)
@@ -119,4 +123,5 @@ def logout():
 @app.route("/account/")
 @login_required
 def account():
-    return render_template("account.html", title="Your Account")
+    products = current_user.products
+    return render_template("account.html", title="Your Account", products=products)

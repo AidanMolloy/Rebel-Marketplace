@@ -6,7 +6,7 @@
         <div class="card">
             <h1>{{ product.name}} </h1>
             <p class="price">€{{product.price}}</p>
-            <a href="{{ url_for('product', pid=product.id)}}"><button>More info</button></a>
+            <a href="{{ url_for('product', product_id=product.id)}}"><button>More info</button></a>
         </div>
         {% endfor %}
     </div>

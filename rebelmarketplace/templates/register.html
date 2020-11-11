@@ -7,15 +7,15 @@
             <div>
               <div>
               <!-- havent added any class but you have to do it this way for flask -->
-                {{ form.company.label(class="token-class")}}
+                {{ form.name.label(class="token-class")}}
 
-                {% if form.company.errors %}
-                  {{ form.company(class="token-class")}}
-                    {% for error in form.company.errors %}
+                {% if form.name.errors %}
+                  {{ form.name(class="token-class")}}
+                    {% for error in form.name.errors %}
                       <span class="invalid-input">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
-                  {{ form.company(class="token-class")}}
+                  {{ form.name(class="token-class")}}
                 {% endif %}
               </div>
               <div>

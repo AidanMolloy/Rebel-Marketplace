@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <form method="POST", action="", class="register-form">
+        {{ form.hidden_tag() }} 
+        <div>
+            <div>
+            {{ form.name.label(class="token-class")}}
+                {% if form.name.errors %}
+                {{ form.name(class="token-class")}}
+                <div class="error">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.name(class="token-class")}}
+                {% endif %}
+            </div>
+            <div>
+            {{ form.description.label(class="token-class")}}
+            {% if form.description.errors %}
+                {{ form.description(class="token-class invalid")}}
+                <div class="error">
+                {% for error in form.description.errors %}
+                    <span>{{ error }}</span> 
+                {% endfor %}
+                </div>
+            {% else %}
+                {{ form.description(class="token-class")}}
+            {% endif %}
+            </div>
+            <div>
+                <div>
+                {{ form.price.label(class="token-class")}}
+                    {% if form.price.errors %}
+                    {{ form.price(class="token-class")}}
+                    <div class="error">
+                        {% for error in form.price.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.price(class="token-class")}}
+                    {% endif %}
+                </div>
+                <div>
+                {{ form.quantity.label(class="token-class")}}
+                {% if form.quantity.errors %}
+                    {{ form.quantity(class="token-class invalid")}}
+                    <div class="error">
+                    {% for error in form.quantity.errors %}
+                        <span>{{ error }}</span> 
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.quantity(class="token-class")}}
+                {% endif %}
+                </div>
+            </div>
+        <div>
+        {{ form.submit }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

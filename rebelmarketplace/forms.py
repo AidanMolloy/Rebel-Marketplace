@@ -1,12 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, TextAreaField, IntegerField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from rebelmarketplace.models import Company
 from rebelmarketplace.counties import counties 
 
 class RegistrationForm(FlaskForm):
 
-    company = StringField('Company *', 
+    name = StringField('Company *', 
                         validators=[DataRequired(),Length(min=2, max=30)])
     email = StringField('Email *', 
                         validators=[DataRequired(), Email()])
@@ -47,3 +47,12 @@ class LoginForm(FlaskForm):
     
     remember = BooleanField("Remember me") # cookie stuff ngl dont really know anything about this 
     submit = SubmitField("Login!")  
+
+
+class ProductForm(FlaskForm):
+    name = StringField('Product Name *', validators=[DataRequired()])
+    description = TextAreaField("Product Description *", validators=[DataRequired()])
+    price = IntegerField('Price € *', validators=[DataRequired(), NumberRange(min=0)])
+    quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=0)])
+
+    submit = SubmitField("Add Product!")  

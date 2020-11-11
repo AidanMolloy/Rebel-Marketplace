@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ product.name }} </h1>
+    <div>
+        <p>{{ product.description}}</p>
+        <p>{{ product.price}}</p>
+        <p>{{ product.quantity}}</p>
+    <p>From <a href="{{ url_for('company', company_id=product.company.id)}}">{{ product.company.name }}</a></p>
+    </div>
+    {% if product.company == current_user %}
+        <div>
+            <a href="{{ url_for('update_product', product_id=product.id)}}">Update Product</a>
+            <form action="{{ url_for('delete_product', product_id=product.id) }}", method="POST">
+                <input type="submit", value="Delete">
+            </form>
+        </div>
+    {% endif %}
+{% endblock content %}

@@ -12,7 +12,7 @@
                 {% if form.name.errors %}
                   {{ form.name(class="token-class")}}
                     {% for error in form.name.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.name(class="token-class")}}
@@ -24,7 +24,7 @@
                   {% if form.email.errors %}
                     {{ form.email(class="token-class")}}
                       {% for error in form.email.errors %}
-                        <span class="invalid-input">{{ error }}</span>
+                        <span class="error">{{ error }}</span>
                       {% endfor %}
                   {% else %}
                     {{ form.email(class="token-class")}}
@@ -36,7 +36,7 @@
                 {% if form.password.errors %}
                   {{ form.password(class="token-class")}}
                     {% for error in form.password.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.password(class="token-class")}}
@@ -48,7 +48,7 @@
                 {% if form.confirm_password.errors %}
                   {{ form.confirm_password(class="token-class")}}
                     {% for error in form.confirm_password.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.confirm_password(class="token-class")}}
@@ -60,7 +60,7 @@
                 {% if form.address1.errors %}
                   {{ form.address1(class="token-class")}}
                     {% for error in form.address1.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.address1(class="token-class")}}
@@ -72,7 +72,7 @@
                 {% if form.address2.errors %}
                   {{ form.address2(class="token-class")}}
                     {% for error in form.address2.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.address2(class="token-class")}}
@@ -84,7 +84,7 @@
                 {% if form.address3.errors %}
                   {{ form.address3(class="token-class")}}
                     {% for error in form.address3.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.address3(class="token-class")}}
@@ -99,7 +99,7 @@
                 {% if form.eircode.errors %}
                   {{ form.eircode(class="token-class")}}
                     {% for error in form.eircode.errors %}
-                      <span class="invalid-input">{{ error }}</span> 
+                      <span class="error">{{ error }}</span> 
                     {% endfor %}
                 {% else %}
                   {{ form.eircode(class="token-class")}}

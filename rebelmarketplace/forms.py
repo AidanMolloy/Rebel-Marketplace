@@ -28,7 +28,7 @@ class RegistrationForm(FlaskForm):
     thank_you_msg = TextAreaField("Thank you message")
     
 
-    submit = SubmitField("Register Now!")
+    submit = SubmitField("Register Now")
 
     def validate_email(self, email):
         company = Company.query.filter_by(email=email.data).first()
@@ -48,7 +48,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired()])
     
     remember = BooleanField("Remember me") # cookie stuff ngl dont really know anything about this 
-    submit = SubmitField("Login!")  
+    submit = SubmitField("Login")  
 
 
 class ProductForm(FlaskForm):
@@ -57,10 +57,17 @@ class ProductForm(FlaskForm):
     price = IntegerField('Price € *', validators=[DataRequired(), NumberRange(min=0)])
     quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=0)])
     image = FileField("Photo", validators=[FileAllowed(["jpg", "jpeg", "png"])])
-    submit = SubmitField("Add Product!")  
+    submit = SubmitField("Add Product")  
 
 class UpdateAccountForm(FlaskForm):
     thank_you_msg = TextAreaField("Thank you message")
     description = TextAreaField("Company description")
 
-    submit = SubmitField("Update account!")
+    submit = SubmitField("Update account")
+
+class BuyForm(FlaskForm):
+    card_number = StringField("Card Number *", validators=[DataRequired()])
+    expiration_date = StringField("Expiration Date MM/YY *", validators=[DataRequired()])
+    cvv = StringField("CVV *", validators=[DataRequired()])
+
+    submit = SubmitField("Place Order")

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1> Checkout </h1>
+    <div>
+        <h3>Your order</h3>
+        <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+        <p>{{ product.name}}</p>
+        <p>{{ product.description}}</p>
+        <p>€{{ product.price}}</p>
+        <p>Quantity: 1</p>
+    </div>
+    <hr>
+    <div>
+        <form action="", method="POST">
+            {{ form.hidden_tag() }} 
+            <div>
+                {{ form.card_number.label(class="token-class")}}
+                    {% if form.card_number.errors %}
+                    {{ form.card_number(class="token-class")}}
+                    <div class="error">
+                        {% for error in form.card_number.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.card_number(class="token-class")}}
+                    {% endif %}
+                </div>
+                <div>
+                {{ form.expiration_date.label(class="token-class")}}
+                {% if form.expiration_date.errors %}
+                    {{ form.expiration_date(class="token-class invalid")}}
+                    <div class="error">
+                    {% for error in form.expiration_date.errors %}
+                        <span>{{ error }}</span> 
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.expiration_date(class="token-class")}}
+                {% endif %}
+                </div>
+                <div>
+                    {{ form.cvv.label(class="token-class")}}
+                    {% if form.cvv.errors %}
+                        {{ form.cvv(class="token-class invalid")}}
+                        <div class="error">
+                        {% for error in form.cvv.errors %}
+                            <span>{{ error }}</span> 
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cvv(class="token-class")}}
+                    {% endif %}
+                    </div>
+            <div>
+            {{ form.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}                                              

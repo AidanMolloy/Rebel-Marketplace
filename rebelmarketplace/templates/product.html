@@ -16,7 +16,7 @@
             </form>
         </div>
     {% endif %}
-    <form action="{{url_for('buy', product_id=product.id) }}", method="POST">
-        <input type="submit", value="Buy now!"></input>
-    </form>
+    <div>
+        <a href="{{ url_for('buy', product_id=product.id) }}"> Buy Now </a>
+    </div>
 {% endblock content %}

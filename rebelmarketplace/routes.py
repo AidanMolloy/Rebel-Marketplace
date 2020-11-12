@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, flash, redirect, abort
 from rebelmarketplace import app, db, bcyrpt
-from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm
+from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm, BuyForm
 from rebelmarketplace.models import Company, Product
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets 
@@ -44,11 +44,13 @@ def save_image(form_image):
 def new_product(): 
     form = ProductForm()
     if form.validate_on_submit():
+        post = Product(name=form.name.data, description=form.description.data,
+                    price=form.price.data, quantity=form.quantity.data, company=current_user)
+        
         if form.image.data:
             image_file = save_image(form.image.data)
+            post.image = image_file
             
-        post = Product(name=form.name.data, description=form.description.data,
-                    price=form.price.data, quantity=form.quantity.data, image=image_file, company=current_user)
         db.session.add(post)
         db.session.commit()
         flash("Product added successfully", "success")
@@ -157,14 +159,20 @@ def account():
             form.thank_you_msg.data = current_user.thank_you_msg
     return render_template("account.html", title="Your Account", products=products, form=form)
 
-
-@app.route("/buy/<int:product_id>/", methods=["POST"])
+@app.route("/buy/<int:product_id>/", methods=["GET", "POST"])
 def buy(product_id):
+    form = BuyForm()
     product = Product.query.get(product_id)
-    if product.quantity > 0:
-        product.quantity -= 1
-    db.session.commit()
+    if form.validate_on_submit():
+        if product.quantity > 0:
+            product.quantity -= 1
+        db.session.commit()
     
-    company = product.company
-    return render_template("thanks.html", title="Thanks", company=company)
+        company = product.company
+        print("you bought this?")
+        return render_template("thanks.html", title="Thanks", company=company)
+
+    return render_template("buy.html", product=product, form=form)
+
+
 

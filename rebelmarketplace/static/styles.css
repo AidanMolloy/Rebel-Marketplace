@@ -62,6 +62,7 @@ nav li a:hover {
     padding: 10px;
     text-align: center;
     font-family: arial;
+    width: 20%;
   }
 
 .price {

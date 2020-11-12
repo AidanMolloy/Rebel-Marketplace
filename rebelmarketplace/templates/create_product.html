@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div>
-    <form method="POST", action="", class="register-form">
+    <form method="POST", action="", class="register-form", enctype="multipart/form-data">
         {{ form.hidden_tag() }} 
         <div>
             <div>
@@ -56,6 +56,20 @@
                 {% else %}
                     {{ form.quantity(class="token-class")}}
                 {% endif %}
+                </div>
+                <div>
+                    {{ form.image.label(class="token-class")}}
+                    {% if form.image.errors %}
+                        {{ form.image(class="token-class invalid")}}
+                        <div class="error">
+                        {% for error in form.image.errors %}
+                            <span>{{ error }}</span> 
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.image(class="token-class")}}
+                    {% endif %}
+                    </div>
                 </div>
             </div>
         <div>

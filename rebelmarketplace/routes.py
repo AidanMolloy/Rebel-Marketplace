@@ -1,9 +1,11 @@
 from flask import render_template, url_for, request, flash, redirect, abort
 from rebelmarketplace import app, db, bcyrpt
-from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm
+from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm
 from rebelmarketplace.models import Company, Product
 from flask_login import login_user, current_user, logout_user, login_required
-
+import secrets 
+import os
+from PIL import Image
 
 @app.route("/")
 def home():
@@ -22,13 +24,31 @@ def product(product_id):
     product = Product.query.get_or_404(product_id)
     return render_template("product.html", title=product.name, product=product)
 
+def save_image(form_image):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_image.filename)
+    image_fn = random_hex + f_ext
+    image_path = os.path.join(app.root_path, "static/product_pics", image_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_image)
+    i.thumbnail(output_size)
+    i.save(image_path)
+    
+    return image_fn
+
+
+
 @app.route("/product/new/", methods=["GET", "POST"])
 @login_required
 def new_product(): 
     form = ProductForm()
     if form.validate_on_submit():
+        if form.image.data:
+            image_file = save_image(form.image.data)
+            
         post = Product(name=form.name.data, description=form.description.data,
-                    price=form.price.data, quantity=form.quantity.data, company=current_user)
+                    price=form.price.data, quantity=form.quantity.data, image=image_file, company=current_user)
         db.session.add(post)
         db.session.commit()
         flash("Product added successfully", "success")
@@ -47,6 +67,7 @@ def update_product(product_id):
         product.description = form.description.data
         product.price = form.price.data
         product.quantity = form.quantity.data
+        product.image = save_image(form.image.data)
         db.session.commit()
         flash("Your product has been updated", "success")
         return redirect(url_for("product", product_id=product.id))
@@ -120,11 +141,22 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-@app.route("/account/")
+@app.route("/account/", methods=["GET", "POST"])
 @login_required
 def account():
+    form = UpdateAccountForm()
     products = current_user.products
-    return render_template("account.html", title="Your Account", products=products)
+    if form.validate_on_submit():
+        current_user.description = form.description.data
+        current_user.thank_you_msg= form.thank_you_msg.data
+        db.session.commit()
+        flash("Your account has been updated", "success")
+        return redirect(url_for("account"))
+    elif request.method == "GET":        
+            form.description.data = current_user.description
+            form.thank_you_msg.data = current_user.thank_you_msg
+    return render_template("account.html", title="Your Account", products=products, form=form)
+
 
 @app.route("/buy/<int:product_id>/", methods=["POST"])
 def buy(product_id):

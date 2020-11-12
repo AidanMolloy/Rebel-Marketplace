@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>{{ product.name }} </h1>
+    <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
     <div>
         <p>{{ product.description}}</p>
         <p>{{ product.price}}</p>

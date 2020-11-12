@@ -1,18 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-    <div>
-        <h2> {{ current_user.name }} </h2>
-        <p> {{ current_user.email }} </p> 
-    </div>
-    <div>
-        {% for product in products %}
-            <div class="card">
-                <h1>{{ product.name}} </h1>
-                <p class="price">€{{product.price}}</p>
-                <a href="{{ url_for('product', product_id=product.id)}}"><button></button>More info</button></a>
+<div>
+    <form method="POST", action="", class="form">
+        {{ form.hidden_tag() }} 
+        <div>
+          <div>
+            {{ form.description.label(class="token-class")}}
+            {% if form.description.errors %}
+              {{ form.description(class="token-class")}}
+                {% for error in form.description.errors %}
+                  <span class="invalid-input">{{ error }}</span> 
+                {% endfor %}
+            {% else %}
+              {{ form.description(class="token-class")}}
+            {% endif %}
             </div>
-        {% endfor %}
-    </div>
+            <div>
+                {{ form.thank_you_msg.label(class="token-class")}}
+                {% if form.thank_you_msg.errors %}
+                {{ form.thank_you_msg(class="token-class")}}
+                    {% for error in form.thank_you_msg.errors %}
+                    <span class="invalid-input">{{ error }}</span> 
+                    {% endfor %}
+                {% else %}
+                {{ form.thank_you_msg(class="token-class")}}
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+        <div>
+            {% for product in products %}
+                <div class="card">
+                    <h1>{{ product.name}} </h1>
+                    <p class="price">€{{product.price}}</p>
+                    <a href="{{ url_for('product', product_id=product.id)}}"><button>More info</button></a>
+                </div>
+            {% endfor %}
+        </div>
     
 
 

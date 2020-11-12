@@ -1,4 +1,6 @@
 from flask_wtf import FlaskForm
+from flask_login import current_user
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from rebelmarketplace.models import Company
@@ -19,12 +21,12 @@ class RegistrationForm(FlaskForm):
     county = SelectField('County *', 
                         choices=counties,
                         validators=[DataRequired()])
-
     # could check for valid eircode or even use the eircode to query for addess?
     # maybe even check from eircode then ask user is this the address and let them adjust accordingly
-    eircode= StringField('Eircode *', 
+    eircode = StringField('Eircode *', 
                         validators=[DataRequired(),Length(min=2, max=30)])
-
+    thank_you_msg = TextAreaField("Thank you message")
+    
 
     submit = SubmitField("Register Now!")
 
@@ -54,5 +56,11 @@ class ProductForm(FlaskForm):
     description = TextAreaField("Product Description *", validators=[DataRequired()])
     price = IntegerField('Price € *', validators=[DataRequired(), NumberRange(min=0)])
     quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=0)])
-
+    image = FileField("Photo", validators=[FileAllowed(["jpg", "jpeg", "png"])])
     submit = SubmitField("Add Product!")  
+
+class UpdateAccountForm(FlaskForm):
+    thank_you_msg = TextAreaField("Thank you message")
+    description = TextAreaField("Company description")
+
+    submit = SubmitField("Update account!")

@@ -3,7 +3,11 @@
     <h1> Checkout </h1>
     <div>
         <h3>Your order</h3>
-        <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+        {% if product.image.startswith("http") %}
+            <img src="{{ product.image }}", height=125, width=125>
+        {% else %}
+            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+        {% endif %}
         <p>{{ product.name}}</p>
         <p>{{ product.description}}</p>
         <p>€{{ product.price}}</p>

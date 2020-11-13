@@ -25,9 +25,7 @@ def product(product_id):
     return render_template("product.html", title=product.name, product=product)
 
 def save_image(form_image):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_image.filename)
-    image_fn = random_hex + f_ext
+    image_fn = form_image.filename
     image_path = os.path.join(app.root_path, "static/product_pics", image_fn)
 
     output_size = (125, 125)

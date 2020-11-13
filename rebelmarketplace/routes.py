@@ -69,7 +69,8 @@ def update_product(product_id):
         product.description = form.description.data
         product.price = form.price.data
         product.quantity = form.quantity.data
-        product.image = save_image(form.image.data)
+        if form.image.data:
+            product.image = save_image(form.image.data)
         db.session.commit()
         flash("Your product has been updated", "success")
         return redirect(url_for("product", product_id=product.id))

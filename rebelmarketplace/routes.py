@@ -3,7 +3,6 @@ from rebelmarketplace import app, db, bcyrpt
 from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm, BuyForm
 from rebelmarketplace.models import Company, Product
 from flask_login import login_user, current_user, logout_user, login_required
-import secrets 
 import os
 from PIL import Image
 

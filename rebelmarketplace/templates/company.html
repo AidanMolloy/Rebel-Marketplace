@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     <div>
-        <h2> {{ current_user.name }} </h2>
-        <p> {{ current_user.email }} </p> 
-        <p> {{ current_user.description}} </p> 
+        <h2> {{ company.name }} </h2>
+        <p> {{ company.email }} </p> 
+        <p> {{ company.description}} </p> 
+        <p> {{ company.address1}} </p> 
+        <p> {{ company.county}} </p> 
+        <p> {{ company.eircode}} </p> 
     </div>
     <div>
         {% for product in products %}
             <div class="card">
-                <img src=""
+                {% if product.image.startswith("http") %}
+                    <img src="{{ product.image }}", height=125, width=125>
+                {% else %}
+                    <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+                {% endif %}
                 <h1>{{ product.name}} </h1>
                 <p class="price">€{{product.price}}</p>
                 <a href="{{ url_for('product', product_id=product.id)}}"><button>More info</button></a>

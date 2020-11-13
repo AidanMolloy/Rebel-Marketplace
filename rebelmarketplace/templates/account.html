@@ -35,6 +35,11 @@
         <div>
             {% for product in products %}
                 <div class="card">
+                    {% if product.image.startswith("http") %}
+                        <img src="{{ product.image }}", height=125, width=125>
+                    {% else %}
+                        <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+                    {% endif %}
                     <h1>{{ product.name}} </h1>
                     <p class="price">€{{product.price}}</p>
                     <a href="{{ url_for('product', product_id=product.id)}}"><button>More info</button></a>

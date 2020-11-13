@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>{{ product.name }} </h1>
-    <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+    {% if product.image.startswith("http") %}
+        <img src="{{ product.image }}", height=125, width=125>
+    {% else %}
+        <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+    {% endif %}
     <div>
         <p>{{ product.description}}</p>
         <p>{{ product.price}}</p>

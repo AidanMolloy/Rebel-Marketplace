@@ -30,7 +30,7 @@ class Product(db.Model):
     id =db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    price = db.Column(db.Integer, nullable=False) # come back to min values
+    price = db.Column(db.Float, nullable=False) # come back to min values
     quantity = db.Column(db.Integer, nullable=False) # come back to min values
     image = db.Column(db.String(20), nullable=False, default="default.png")
     company_id = db.Column(db.Integer, db.ForeignKey("company.id"), nullable=False)

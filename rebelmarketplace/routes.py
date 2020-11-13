@@ -44,14 +44,14 @@ def save_image(form_image):
 def new_product(): 
     form = ProductForm()
     if form.validate_on_submit():
-        post = Product(name=form.name.data, description=form.description.data,
+        product = Product(name=form.name.data, description=form.description.data,
                     price=form.price.data, quantity=form.quantity.data, company=current_user)
         
         if form.image.data:
             image_file = save_image(form.image.data)
-            post.image = image_file
+            product.image = image_file
             
-        db.session.add(post)
+        db.session.add(product)
         db.session.commit()
         flash("Product added successfully", "success")
         return redirect(url_for("account"))
@@ -102,7 +102,7 @@ def catalog():
 def company(company_id):
     company = Company.query.get_or_404(company_id)
     products = company.products
-    return render_template("company.html", products=products)
+    return render_template("company.html", products=products, company=company)
 
 @app.route("/register/", methods=["GET", "POST"])
 def register():

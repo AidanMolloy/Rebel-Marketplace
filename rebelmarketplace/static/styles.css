@@ -67,6 +67,7 @@ nav li a:hover {
 }
 
 .dropdown-content {
+    text-align: left;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -92,15 +93,16 @@ nav li a:hover {
     display: inline;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1130px) {
 
     header {
         display: block;
+        text-align: right;
         padding: 30px 40px;
     }
 
     header h1 {
-        font-size: 0;
+        display: none;
     }
 
     nav ul li, .dropdown {
@@ -109,15 +111,16 @@ nav li a:hover {
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 690px) {
 
     header {
         display: block;
+        text-align: left;
         padding: 20px 30px;
     }
 
     nav ul li p, header h1 {
-        font-size: 0;
+        display: none !important;
     }
 
     nav ul li, .dropdown {
@@ -133,7 +136,6 @@ nav li a:hover {
 .products-container {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
     flex-wrap: wrap;
     max-width: 1940px;
 }
@@ -141,31 +143,50 @@ nav li a:hover {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 50px;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     font-family: arial;
     width: 20%;
+    min-width: 230px;
+    max-width: 250px;
   }
 
+.card img {
+    max-width: 60%;
+    max-height: 200px;
+}
+
 .price {
+    text-align: left;
     color: grey;
-    font-size: 22px;
+    font-size: 15px;
+    margin: 10px 0;
 }
 
-.card button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-}
-
-.card button:hover {
+.card:hover {
     opacity: 0.7;
+}
+
+.productCompanyTitle {
+    text-align: left;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    text-decoration: underline;
+}
+
+.productTitle {
+    text-align: left;
+    color: black;
+    font-size: 16px;
+    text-shadow: 1px 1px #eee;
+    margin: 10px 0;
+}
+
+.productDisplay img{
+    max-width: 80%;
+    max-height: 200px;
 }
 
 /* Forms */
@@ -221,10 +242,14 @@ hr {
 
 .success {
    color:green;
+   list-style-type:none;
+   padding-bottom: 10px;
 }
 
 .error {
    color:red;
+   list-style-type:none;
+   padding-bottom: 10px;
 }
 
 .info {

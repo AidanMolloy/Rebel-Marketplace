@@ -20,12 +20,12 @@
                     <li><a href="{{ url_for('catalog') }}"><i class="fas fa-stream"></i><p> Catalogue</p></a></li>
                     <!--<li><a href="{{ url_for('contact') }}">Contact</a></li>-->
                     {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('account') }}">Account</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                        <li><a href="{{ url_for('new_product') }}">New Product</a></li>
+                        <li><a href="{{ url_for('new_product') }}"><i class="fas fa-plus-square"></i><p> New Product</p></a></li>
+                        <li><a href="{{ url_for('account') }}"><i class="fas fa-user-circle"></i><p> Account</p></a></li>
+                        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i><p> Logout</p></a></li>
                     {% else %}
                         <div class="dropdown">
-                            <li class="dropbtn"><i class="fas fa-store"></i><p> Business Account</p> <i class="fas fa-caret-down"></i>
+                            <li class="dropbtn"><i class="fas fa-store"></i><p> Business Account <i class="fas fa-caret-down"></i></p>
                             </li>
                             <div class="dropdown-content">
                                 <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a></li><br>

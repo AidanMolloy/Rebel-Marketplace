@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-    <img class="homeFeature" src="static/img/logo.png">
+    <div class="homeFeatureImg">
+        <img src="static/img/logo.png">
+    </div>
     <div class="homeFeature">
         <h2>About Us</h2><br>
-        <p>We are Team &lt;BR/>S and this is our project “The Rebel Marketplace”. This project was inspired by the hackathon theme, “Working From Home”, and the current lockdown. Many local businesses have been affected by this pandemic and have had little option but to work from home. This has put countless local companies under financial strain especially those without an online presence. Not all business owners have the technical skills or time to create a working e-commerce site and many of these may not have the funds to spare to hire a web developer to do the work for them. This is where our project hopes to solve this predicament.</p><br>
-        <p>The introduction of covid-19 in our lives has highlighted the importance of community. People, now more than ever, want their hard earned money to be circulated back into the local community. The idea that for a few extra euro, your patronage can help support a local business person support their family, and create and sustain jobs within the community. This website gives artists, entrepreneurs and companies a platform to sell their products online with minimal effort. No online presence? No problem!</p>
+        <p>We are Team &lt;br/>s and this is our project “The Rebel Marketplace”. This project was inspired by the hackathon theme, “Working From Home”, and the current lockdown. Many local businesses have been affected by this pandemic and have had little option but to work from home. This has put countless local companies under financial strain especially those without an online presence. Not all business owners have the technical skills or time to create a working e-commerce site and many of these may not have the funds to spare to hire a web developer to do the work for them. This is where our project hopes to solve this predicament.</p><br>
+        <p>The introduction of COVID-19 in our lives has highlighted the importance of community. People, now more than ever, want their hard earned money to be circulated back into the local community. The idea that for a few extra euro, your patronage can help support a local business person support their family, and create and sustain jobs within the community. This website gives artists, entrepreneurs and companies a platform to sell their products online with minimal effort. <br><br>No online presence? No problem!</p>
     </div>
-    <div id="lightbox" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-            <div class="modal-content">
-                <img src="static/img/Long_Team_Logo.gif" style="width:100%">
-            </div>
+    <br>
+    <div class="homeFeatureImg2">
+        <img src="static/img/Team_Logo.gif">
     </div>
-    <script>
-        // Open the Modal
-        document.getElementById("lightbox").style.display = "block";
-        
-        // Close the Modal
-        function closeModal() {
-          document.getElementById("lightbox").style.display = "none";
-        }
-    </script>
+    <div class="homeFeature2">
+        <h2>The Team</h2><br>
+        <p>Aidan Molloy - 2nd Year Computer Science (<a href="https://github.com/AidanMolloy"><i class="fab fa-github"></i></a>, <a href="https://www.linkedin.com/in/aidan-r-molloy/"><i class="fab fa-linkedin-in"></i></a>)</p><br>
+        <p>Adam Purcell - 3rd Year Computer Science (<a href="https://github.com/ap7t"><i class="fab fa-github"></i></a>, <a href="https://www.linkedin.com/in/adam-purcell-b2130b1b8/"><i class="fab fa-linkedin-in"></i></a>)</p><br>
+        <p>Fiona Cremins - Final Year Digital Humanities (<a href="https://github.com/fionacremins"><i class="fab fa-github"></i></a>, <a href="https://www.linkedin.com/in/fiona-cremins-870516171/"><i class="fab fa-linkedin-in"></i></a>)</p>
+    </div>
 
 {% endblock content %}

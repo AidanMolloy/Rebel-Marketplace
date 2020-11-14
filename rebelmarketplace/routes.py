@@ -27,7 +27,7 @@ def save_image(form_image):
     image_fn = form_image.filename
     image_path = os.path.join(app.root_path, "static/product_pics", image_fn)
 
-    output_size = (125, 125)
+    output_size = (250, 250)
     i = Image.open(form_image)
     i.thumbnail(output_size)
     i.save(image_path)

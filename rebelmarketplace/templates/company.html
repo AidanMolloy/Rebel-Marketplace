@@ -3,23 +3,26 @@
     <div>
         <h2> {{ company.name }} </h2>
         <p> {{ company.email }} </p> 
-        <p> {{ company.description}} </p> 
+        <br> 
+        <p> {{ company.description}} </p>
+        <br>
         <p> {{ company.address1}} </p> 
         <p> {{ company.county}} </p> 
         <p> {{ company.eircode}} </p> 
     </div>
-    <div>
+    <hr>
+    <div class="products-container">
         {% for product in products %}
-            <div class="card">
-                {% if product.image.startswith("http") %}
-                    <img src="{{ product.image }}", height=125, width=125>
-                {% else %}
-                    <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
-                {% endif %}
-                <h1>{{ product.name}} </h1>
-                <p class="price">€{{product.price}}</p>
-                <a href="{{ url_for('product', product_id=product.id)}}"><button>More info</button></a>
-            </div>
+        <a class="card" href="{{ url_for('product', product_id=product.id)}}">
+            <p class="productCompanyTitle">{{ product.company.name}} </p>
+        {% if product.image.startswith("http") %}
+            <img src="{{ product.image }}">
+        {% else %}
+            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+        {% endif %}
+            <p class="productTitle">{{ product.name}} </p>
+            <p class="price">€{{product.price}}</p>
+    </a>
         {% endfor %}
     </div>
 {% endblock content %}

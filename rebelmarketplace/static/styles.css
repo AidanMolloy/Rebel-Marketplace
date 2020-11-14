@@ -378,3 +378,8 @@ hr {
 .info {
     color: #BEE3DB;
 }
+
+.updateImage{
+    max-width: 200px;
+    max-height: 200px;
+}

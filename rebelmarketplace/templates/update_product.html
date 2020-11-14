@@ -28,52 +28,52 @@
                 {% endif %}
             </div>
             <div>
-                <div>
-                {{ form.price.label()}}
-                    {% if form.price.errors %}
+            <div>
+            {{ form.price.label()}}
+                {% if form.price.errors %}
+                {{ form.price()}}
+                    {% for error in form.price.errors %}
+                    <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
                     {{ form.price()}}
-                        {% for error in form.price.errors %}
-                        <span class="error">{{ error }}</span>
-                        {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                {{ form.quantity.label()}}
+                {% if form.quantity.errors %}
+                    {{ form.quantity()}}
+                    {% for error in form.quantity.errors %}
+                        <span class="error">{{ error }}</span> 
+                    {% endfor %}
+                {% else %}
+                    {{ form.quantity()}}
+                {% endif %}
+            </div>
+            <div>
+                {{ form.image.label() }}
+                <div>
+                    {% if product.image.startswith("http") %}
+                        <img class="updateImage" src="{{ product.image }}"><br>
                     {% else %}
-                        {{ form.price()}}
+                        <img class="updateImage" src="{{ url_for('static', filename='product_pics/' + product.image) }}"><br>
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.quantity.label()}}
-                    {% if form.quantity.errors %}
-                        {{ form.quantity()}}
-                        {% for error in form.quantity.errors %}
+                    {% if form.image.errors %}
+                        {{ form.image()}}
+                        {% for error in form.image.errors %}
                             <span class="error">{{ error }}</span> 
                         {% endfor %}
                     {% else %}
-                        {{ form.quantity()}}
+                        {{ form.image()}}
                     {% endif %}
                 </div>
-                <div>
-                    {{ form.image.label() }}
-                    <div>
-                        {% if product.image.startswith("http") %}
-                            <img src="{{ product.image }}"><br>
-                        {% else %}
-                            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}"><br>
-                        {% endif %}
-                    </div>
-                    <div>
-                        {% if form.image.errors %}
-                            {{ form.image()}}
-                            {% for error in form.image.errors %}
-                                <span class="error">{{ error }}</span> 
-                            {% endfor %}
-                        {% else %}
-                            {{ form.image()}}
-                        {% endif %}
-                    </div>
-                </div>
+            </div>
+            <br>
+            {{ form.submit }}
+            </div>
         <div>
-        <br>
-        {{ form.submit }}
-        </div>
     </form>
 
     <br>

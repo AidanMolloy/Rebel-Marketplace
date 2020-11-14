@@ -169,11 +169,10 @@ nav li a:hover {
 
 .productCompanyTitle {
     text-align: left;
-    color: black;
+    color: #4CAF50;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 20px 0;
-    text-decoration: underline;
 }
 
 .productTitle {

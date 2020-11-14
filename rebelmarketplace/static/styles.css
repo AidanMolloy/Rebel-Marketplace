@@ -62,7 +62,7 @@ nav li a:hover {
     color: #1DB954;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn, .dropdown:focus .dropbtn {
     opacity: 0.9;
 }
 
@@ -84,7 +84,7 @@ nav li a:hover {
     text-align: left;
   }
   
-  .dropdown:hover .dropdown-content {
+  .dropdown:hover .dropdown-content, .dropdown:focus .dropdown-content {
     display: block;
   }
   

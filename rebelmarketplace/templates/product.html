@@ -2,17 +2,19 @@
 {% block content %}
     <div class="productDisplay">
         <h2>{{ product.name }} </h2>
+        <p> <a href="{{ url_for('company', company_id=product.company.id)}}">{{ product.company.name }}</a></p>
         {% if product.image.startswith("http") %}
-            <img src="{{ product.image }}">
+            <img src="{{ product.image }}"><br>
         {% else %}
-            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
+            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}"><br>
         {% endif %}
-        <div>
+        <div class="desc">
             <p>{{ product.description}}</p>
-            <p>Price: {{ product.price}}</p>
+            <br>
+            <p>Price: €{{ product.price}}</p>
             <p>Quanitity Available: {{ product.quantity}}</p>
-        <p>From <a href="{{ url_for('company', company_id=product.company.id)}}">{{ product.company.name }}</a></p>
         </div>
+        <a class="buyNow" href="{{ url_for('buy', product_id=product.id) }}"><i class="fas fa-shopping-cart"></i> Buy Now <br> €{{ product.price}}</a>
         {% if product.company == current_user %}
             <div>
                 <a href="{{ url_for('update_product', product_id=product.id)}}">Update Product</a>
@@ -20,9 +22,6 @@
                     <input type="submit", value="Delete">
                 </form>
             </div>
-        {% endif %}
-        <div>
-            <a href="{{ url_for('buy', product_id=product.id) }}"> Buy Now </a>
-        </div>
+        {% endif %}<br>
     </div>
 {% endblock content %}

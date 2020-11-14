@@ -77,7 +77,7 @@ def update_product(product_id):
             form.price.data = product.price
             form.quantity.data = product.quantity   
 
-    return render_template("Update_product.html", title="Update Product", form=form, product=product)   
+    return render_template("update_product.html", title="Update Product", form=form, product=product)   
 
 @app.route("/product/<int:product_id>/delete/", methods=["POST"])
 @login_required

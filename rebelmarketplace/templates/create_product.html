@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<h2> Create a new Product </h2><br>
 <div>
     <form method="POST", action="", class="register-form", enctype="multipart/form-data">
         {{ form.hidden_tag() }} 
@@ -73,6 +74,7 @@
                 </div>
             </div>
         <div>
+        <br>
         {{ form.submit }}
         </div>
     </form>

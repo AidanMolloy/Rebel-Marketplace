@@ -56,8 +56,8 @@ class ProductForm(FlaskForm):
     description = TextAreaField("Product Description *", validators=[DataRequired()])
     price = IntegerField('Price € *', validators=[DataRequired(), NumberRange(min=0)])
     quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=0)])
-    image = FileField("Photo", validators=[FileAllowed(["jpg", "jpeg", "png"])])
-    submit = SubmitField("Add Product")  
+    image = FileField("Product Image ", validators=[FileAllowed(["jpg", "jpeg", "png"])])
+    submit = SubmitField("Create Product")  
 
 class UpdateAccountForm(FlaskForm):
     thank_you_msg = TextAreaField("Thank you message")

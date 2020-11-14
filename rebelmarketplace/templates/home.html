@@ -6,5 +6,20 @@
         <p>We are Team &lt;BR/>S and this is our project “The Rebel Marketplace”. This project was inspired by the hackathon theme, “Working From Home”, and the current lockdown. Many local businesses have been affected by this pandemic and have had little option but to work from home. This has put countless local companies under financial strain especially those without an online presence. Not all business owners have the technical skills or time to create a working e-commerce site and many of these may not have the funds to spare to hire a web developer to do the work for them. This is where our project hopes to solve this predicament.</p><br>
         <p>The introduction of covid-19 in our lives has highlighted the importance of community. People, now more than ever, want their hard earned money to be circulated back into the local community. The idea that for a few extra euro, your patronage can help support a local business person support their family, and create and sustain jobs within the community. This website gives artists, entrepreneurs and companies a platform to sell their products online with minimal effort. No online presence? No problem!</p>
     </div>
-    <!--<img src="static/img/Team_Logo.gif">-->
+    <div id="lightbox" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img src="static/img/Long_Team_Logo.gif" style="width:100%">
+            </div>
+    </div>
+    <script>
+        // Open the Modal
+        document.getElementById("lightbox").style.display = "block";
+        
+        // Close the Modal
+        function closeModal() {
+          document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+
 {% endblock content %}

@@ -1,17 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Arial", "Helvetica", sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 main { 
-    padding-top: 100px;
+    padding-top: 30px;
     margin: 0 5%;
 }
 
 a {
     text-decoration: none;
+}
+
+.homeFeature {
+    float: left;
+    max-width: 50%;
+    margin: 0 4%;
+}
+
+.homeFeature h2 {
+    text-align: center;
+}
+
+img.homeFeature{
+    max-height: 500px;
 }
 
 /* Nav Bar */
@@ -21,28 +36,54 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 70px;
-    background-color: #191414;
-    color: #FFFFFF;
+    background-color: #FFF;
+    color: #191414;
 }
-
 
 nav ul {
     list-style: none;
 }
 
-nav ul li {
+nav ul li, .dropdown {
     display: inline-block;
     padding: 0 15px;
     text-transform: uppercase;
 }
 
 header a { 
-    color:#FFFFFF
+    color:#191414
 }
 
 nav li a:hover {
     color: #1DB954;
 }
+
+.dropdown:hover .dropbtn {
+    opacity: 0.9;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
 /***************/
 
 /* Product cards */
@@ -88,15 +129,53 @@ nav li a:hover {
 
 /* Forms */
 .register-form {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-wrap: wrap;
+    width: 100%;
+}
+
+.col {
+    float: left;
+    width: 40%;
+    margin: 0 5%;
 }
 
 .invalid-input {
     color:red;
     font-size: small¸;
+}
+
+select {
+    font-size: 15px;
+}
+
+input[type=text], input[type=password], select {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 18px;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
 .success {

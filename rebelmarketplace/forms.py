@@ -8,7 +8,7 @@ from rebelmarketplace.counties import counties
 
 class RegistrationForm(FlaskForm):
 
-    name = StringField('Company *', 
+    name = StringField('Business Name *', 
                         validators=[DataRequired(),Length(min=2, max=30)])
     email = StringField('Email *', 
                         validators=[DataRequired(), Email()])
@@ -28,7 +28,7 @@ class RegistrationForm(FlaskForm):
     thank_you_msg = TextAreaField("Thank you message")
     
 
-    submit = SubmitField("Register Now")
+    submit = SubmitField('Register Now')
 
     def validate_email(self, email):
         company = Company.query.filter_by(email=email.data).first()

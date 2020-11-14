@@ -218,6 +218,26 @@ nav li a:hover {
     opacity: 0.7;
 }
 
+.orderInfo {
+    padding: 20px;
+    width: 60%;
+    min-width: 200px;
+    float: left;
+}
+
+.orderInfo img {
+    max-width: 80%;
+    max-height: 200px;
+    margin: 30px 50px 30px 0;
+}
+
+.purchaseForm {
+    padding: 20px;
+    min-width: 200px;
+    width: 40%;
+    float: left;
+}
+
 /* Forms */
 .register-form {
     width: 100%;

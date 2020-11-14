@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1> Checkout </h1>
-    <div>
-        <h3>Your order</h3>
+    <h2>Your order</h2>
+    <div class="orderInfo">
+        <h3>1 x {{ product.name }} </h3>
         {% if product.image.startswith("http") %}
-            <img src="{{ product.image }}", height=125, width=125>
+            <img src="{{ product.image }}">
         {% else %}
             <img src="{{ url_for('static', filename='product_pics/' + product.image) }}">
         {% endif %}
-        <p>{{ product.name}}</p>
+        <br>
         <p>{{ product.description}}</p>
-        <p>€{{ product.price}}</p>
-        <p>Quantity: 1</p>
     </div>
-    <hr>
-    <div>
+    <div class="purchaseForm">
         <form action="", method="POST">
             {{ form.hidden_tag() }} 
             <div>
@@ -57,6 +54,7 @@
                     {% endif %}
                     </div>
             <div>
+            <h3>Total: €{{ product.price}}</h3>
             {{ form.submit }}
             </div>
         </form>

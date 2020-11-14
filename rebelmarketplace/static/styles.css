@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    color: #555B6E;
 }
 
 main { 
@@ -40,8 +41,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 70px;
-    background-color: #FFF;
-    color: #191414;
+    background-color: #FAF9F9;
+    color: #555B6E;
 }
 
 nav ul {
@@ -55,11 +56,11 @@ nav ul li, .dropdown {
 }
 
 header a { 
-    color:#191414
+    color:#555B6E;
 }
 
-nav li a:hover {
-    color: #1DB954;
+nav li a:hover i, nav li a:hover p, nav li a:hover {
+    color: #89B0AE;
 }
 
 .dropdown:hover .dropbtn, .dropdown:focus .dropbtn {
@@ -70,7 +71,7 @@ nav li a:hover {
     text-align: left;
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #BEE3DB;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -78,7 +79,7 @@ nav li a:hover {
 
   .dropdown-content a {
     float: none;
-    color: black;
+    color: #555B6E;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -158,7 +159,7 @@ nav li a:hover {
 
 .price {
     text-align: left;
-    color: grey;
+    color: #89B0AE;
     font-size: 15px;
     margin: 10px 0;
 }
@@ -169,7 +170,7 @@ nav li a:hover {
 
 .productCompanyTitle {
     text-align: left;
-    color: #4CAF50;
+    color: #89B0AE;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 20px 0;
@@ -177,7 +178,7 @@ nav li a:hover {
 
 .productTitle {
     text-align: left;
-    color: black;
+    color: #555B6E;
     font-size: 16px;
     text-shadow: 1px 1px #eee;
     margin: 10px 0;
@@ -206,8 +207,8 @@ nav li a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     display: inline-block;
-    color: black;
-    background-color: #eee;
+    color: #555B6E;
+    background-color: #FFD6BA;
     padding: 12px 20px;
     font-size: 18px;
     font-weight: bold;
@@ -293,8 +294,8 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #89B0AE;
+    color: #FAF9F9;
     padding: 16px 20px;
     margin: 8px 0;
     border: none;
@@ -363,5 +364,5 @@ hr {
 }
 
 .info {
-    color: turquoise;
+    color: #BEE3DB;
 }

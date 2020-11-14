@@ -100,7 +100,7 @@ nav li a:hover {
     }
 
     header h1 {
-        font-size: 0;
+        display: none;
     }
 
     nav ul li, .dropdown {
@@ -117,7 +117,7 @@ nav li a:hover {
     }
 
     nav ul li p, header h1 {
-        font-size: 0;
+        display: none !important;
     }
 
     nav ul li, .dropdown {

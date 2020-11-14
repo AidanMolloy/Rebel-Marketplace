@@ -9,104 +9,104 @@
               <div class="col">
                 <div>
                 <!-- havent added any class but you have to do it this way for flask -->
-                  {{ form.name.label(class="token-class")}}
+                  {{ form.name.label()}}
 
                   {% if form.name.errors %}
-                    {{ form.name(class="token-class")}}
+                    {{ form.name()}}
                       {% for error in form.name.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.name(class="token-class")}}
+                    {{ form.name()}}
                   {% endif %}
                 </div>
                 <div>
-                  {{ form.email.label(class="token-class")}}
+                  {{ form.email.label()}}
 
                     {% if form.email.errors %}
-                      {{ form.email(class="token-class")}}
+                      {{ form.email()}}
                         {% for error in form.email.errors %}
                           <span class="error">{{ error }}</span>
                         {% endfor %}
                     {% else %}
-                      {{ form.email(class="token-class")}}
+                      {{ form.email()}}
                     {% endif %}
                 </div>
                 <div>
-                  {{ form.password.label(class="token-class")}}
+                  {{ form.password.label()}}
 
                   {% if form.password.errors %}
-                    {{ form.password(class="token-class")}}
+                    {{ form.password()}}
                       {% for error in form.password.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.password(class="token-class")}}
+                    {{ form.password()}}
                   {% endif %}
                 </div>
                 <div>
-                  {{ form.confirm_password.label(class="token-class")}}
+                  {{ form.confirm_password.label()}}
 
                   {% if form.confirm_password.errors %}
-                    {{ form.confirm_password(class="token-class")}}
+                    {{ form.confirm_password()}}
                       {% for error in form.confirm_password.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.confirm_password(class="token-class")}}
+                    {{ form.confirm_password()}}
                   {% endif %}
                 </div>
               </div>
               <div class="col">
                 <div>
-                  {{ form.address1.label(class="token-class")}}
+                  {{ form.address1.label()}}
 
                   {% if form.address1.errors %}
-                    {{ form.address1(class="token-class")}}
+                    {{ form.address1()}}
                       {% for error in form.address1.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.address1(class="token-class")}}
+                    {{ form.address1()}}
                   {% endif %}
                 </div>
                 <div>
-                  {{ form.address2.label(class="token-class")}}
+                  {{ form.address2.label()}}
 
                   {% if form.address2.errors %}
-                    {{ form.address2(class="token-class")}}
+                    {{ form.address2()}}
                       {% for error in form.address2.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.address2(class="token-class")}}
+                    {{ form.address2()}}
                   {% endif %}
                 </div>
                 <div>
-                  {{ form.address3.label(class="token-class")}}
+                  {{ form.address3.label()}}
 
                   {% if form.address3.errors %}
-                    {{ form.address3(class="token-class")}}
+                    {{ form.address3()}}
                       {% for error in form.address3.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.address3(class="token-class")}}
+                    {{ form.address3()}}
                   {% endif %}
                 </div>
                 <div>
-                  {{ form.county.label(class="token-class")}}
-                  {{ form.county(class="token-class")}}
+                  {{ form.county.label()}}
+                  {{ form.county()}}
                 </div>
                 <div>
-                  {{ form.eircode.label(class="token-class")}}
+                  {{ form.eircode.label()}}
                   {% if form.eircode.errors %}
-                    {{ form.eircode(class="token-class")}}
+                    {{ form.eircode()}}
                       {% for error in form.eircode.errors %}
                         <span class="error">{{ error }}</span> 
                       {% endfor %}
                   {% else %}
-                    {{ form.eircode(class="token-class")}}
+                    {{ form.eircode()}}
                   {% endif %}
                 </div>
             </div>

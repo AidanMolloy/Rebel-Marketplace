@@ -15,20 +15,20 @@
         <form action="", method="POST">
             {{ form.hidden_tag() }} 
             <div>
-                {{ form.card_number.label(class="token-class")}}
+                {{ form.card_number.label()}}
                     {% if form.card_number.errors %}
-                    {{ form.card_number(class="token-class")}}
+                    {{ form.card_number()}}
                     <div class="error">
                         {% for error in form.card_number.errors %}
                         <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.card_number(class="token-class")}}
+                    {{ form.card_number()}}
                     {% endif %}
                 </div>
                 <div>
-                {{ form.expiration_date.label(class="token-class")}}
+                {{ form.expiration_date.label()}}
                 {% if form.expiration_date.errors %}
                     {{ form.expiration_date(class="token-class invalid")}}
                     <div class="error">
@@ -37,11 +37,11 @@
                     {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.expiration_date(class="token-class")}}
+                    {{ form.expiration_date()}}
                 {% endif %}
                 </div>
                 <div>
-                    {{ form.cvv.label(class="token-class")}}
+                    {{ form.cvv.label()}}
                     {% if form.cvv.errors %}
                         {{ form.cvv(class="token-class invalid")}}
                         <div class="error">
@@ -50,7 +50,7 @@
                         {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.cvv(class="token-class")}}
+                        {{ form.cvv()}}
                     {% endif %}
                     </div>
             <div>

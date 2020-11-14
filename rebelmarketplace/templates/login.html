@@ -7,20 +7,20 @@
         {{ form.hidden_tag() }} 
         <div>
             <div>
-            {{ form.email.label(class="token-class")}}
+            {{ form.email.label()}}
                 {% if form.email.errors %}
-                {{ form.email(class="token-class")}}
+                {{ form.email()}}
                 <div class="error">
                     {% for error in form.email.errors %}
                     <span>{{ error }}</span>
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.email(class="token-class")}}
+                {{ form.email()}}
                 {% endif %}
             </div>
             <div>
-            {{ form.password.label(class="token-class")}}
+            {{ form.password.label()}}
             {% if form.password.errors %}
                 {{ form.password(class="token-class invalid")}}
                 <div class="error">
@@ -29,12 +29,12 @@
                 {% endfor %}
                 </div>
             {% else %}
-                {{ form.password(class="token-class")}}
+                {{ form.password()}}
             {% endif %}
             </div>
             <div>
-                {{ form.remember(class="token-class")}}
-                {{ form.remember.label(class="token-class")}}
+                {{ form.remember()}}
+                {{ form.remember.label()}}
             </div>
         <div>
         {{ form.submit }}

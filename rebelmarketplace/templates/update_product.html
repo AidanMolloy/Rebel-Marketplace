@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2> Create a new Product</h2><br>
+<h2> Update Product </h2><br>
 <div>
     <form method="POST", action="", class="register-form", enctype="multipart/form-data">
         {{ form.hidden_tag() }} 
@@ -52,14 +52,23 @@
                 </div>
                 <div>
                     {{ form.image.label() }}
-                    {% if form.image.errors %}
-                        {{ form.image()}}
-                        {% for error in form.image.errors %}
-                            <span class="error">{{ error }}</span> 
-                        {% endfor %}
-                    {% else %}
-                        {{ form.image()}}
-                    {% endif %}
+                    <div>
+                        {% if product.image.startswith("http") %}
+                            <img src="{{ product.image }}"><br>
+                        {% else %}
+                            <img src="{{ url_for('static', filename='product_pics/' + product.image) }}"><br>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if form.image.errors %}
+                            {{ form.image()}}
+                            {% for error in form.image.errors %}
+                                <span class="error">{{ error }}</span> 
+                            {% endfor %}
+                        {% else %}
+                            {{ form.image()}}
+                        {% endif %}
+                    </div>
                 </div>
         <div>
         <br>
@@ -67,5 +76,14 @@
         </div>
     </form>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="delete">Cannot be undone</label>
+    <form action="{{ url_for('delete_product', product_id=product.id) }}", method="POST">
+        <input id="deleteProduct" type="submit", value="Delete">
+    </form>
 </div>
+
 {% endblock content %}

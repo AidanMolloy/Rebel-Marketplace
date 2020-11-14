@@ -184,7 +184,7 @@ nav li a:hover i, nav li a:hover p, nav li a:hover {
     margin: 10px 0;
 }
 
-.productDisplay img{
+.productDisplay img, .updateImage{
     max-width: 80%;
     max-height: 200px;
     margin: 30px 50px 30px 0;
@@ -291,6 +291,18 @@ input[type=text], input[type=password], select {
 input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
+}
+
+#deleteProduct {
+    background-color: red;
+    color: #FAF9F9;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 18px;
 }
 
 input[type=submit] {

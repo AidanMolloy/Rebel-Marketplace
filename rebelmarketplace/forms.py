@@ -57,6 +57,14 @@ class ProductForm(FlaskForm):
     image = FileField("Product Image ", validators=[FileAllowed(["jpg", "jpeg", "png"])])
     submit = SubmitField("Create Product")  
 
+class UpdateProductForm(FlaskForm):
+    name = StringField('Product Name *', validators=[DataRequired()])
+    description = TextAreaField("Product Description *", validators=[DataRequired()])
+    price = DecimalField('Price € *', validators=[DataRequired(), NumberRange(min=0)], places=2)
+    quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=1)])
+    image = FileField("Product Image ", validators=[FileAllowed(["jpg", "jpeg", "png"])])
+    submit = SubmitField("Update Product") 
+
 class UpdateAccountForm(FlaskForm):
     name = StringField('Business Name *', 
                         validators=[DataRequired(),Length(min=2, max=30)])

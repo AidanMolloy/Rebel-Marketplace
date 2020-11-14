@@ -221,7 +221,6 @@ nav li a:hover {
 .orderInfo {
     padding: 20px;
     width: 60%;
-    min-width: 200px;
     float: left;
 }
 
@@ -233,9 +232,30 @@ nav li a:hover {
 
 .purchaseForm {
     padding: 20px;
-    min-width: 200px;
     width: 40%;
     float: left;
+}
+
+
+@media screen and (max-width: 760px) {
+
+    .orderInfo {
+        clear: both;
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .orderInfo img {
+        max-width: 80%;
+        max-height: 200px;
+        margin: 30px 50px 30px 0;
+    }
+    
+    .purchaseForm {
+        clear: both;
+        padding: 20px;
+        width: 100%;
+    }
 }
 
 /* Forms */

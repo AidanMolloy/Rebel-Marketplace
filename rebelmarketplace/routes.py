@@ -76,6 +76,7 @@ def update_product(product_id):
             form.description.data = product.description
             form.price.data = product.price
             form.quantity.data = product.quantity
+
     return render_template("create_product.html", title="Update Product", form=form)   
 
 @app.route("/product/<int:product_id>/delete/", methods=["POST"])
@@ -153,9 +154,15 @@ def account():
         flash("Your account has been updated", "success")
         return redirect(url_for("account"))
     elif request.method == "GET":        
+            form.name.data = current_user.name
+            form.email.data = current_user.email
             form.description.data = current_user.description
-            form.thank_you_msg.data = current_user.thank_you_msg
-    return render_template("account.html", title="Your Account", products=products, form=form)
+            form.address1.data = current_user.address1
+            form.address2.data = current_user.address2
+            form.address3.data = current_user.address3
+            form.county.data = current_user.county
+            form.eircode.data = current_user.eircode
+    return render_template("account.html", title="Account", products=products, form=form)
 
 @app.route("/buy/<int:product_id>/", methods=["GET", "POST"])
 def buy(product_id):

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, TextAreaField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, TextAreaField, IntegerField, DecimalField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from rebelmarketplace.models import Company
 from rebelmarketplace.counties import counties 
@@ -21,8 +21,6 @@ class RegistrationForm(FlaskForm):
     county = SelectField('County *', 
                         choices=counties,
                         validators=[DataRequired()])
-    # could check for valid eircode or even use the eircode to query for addess?
-    # maybe even check from eircode then ask user is this the address and let them adjust accordingly
     eircode = StringField('Eircode *', 
                         validators=[DataRequired(),Length(min=2, max=30)])
     thank_you_msg = TextAreaField("Thank you message")
@@ -54,14 +52,27 @@ class LoginForm(FlaskForm):
 class ProductForm(FlaskForm):
     name = StringField('Product Name *', validators=[DataRequired()])
     description = TextAreaField("Product Description *", validators=[DataRequired()])
-    price = IntegerField('Price € *', validators=[DataRequired(), NumberRange(min=0)])
-    quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=0)])
+    price = DecimalField('Price € *', validators=[DataRequired(), NumberRange(min=0)], places=2)
+    quantity = IntegerField('Quantity *', validators=[DataRequired(), NumberRange(min=1)])
     image = FileField("Product Image ", validators=[FileAllowed(["jpg", "jpeg", "png"])])
     submit = SubmitField("Create Product")  
 
 class UpdateAccountForm(FlaskForm):
-    thank_you_msg = TextAreaField("Thank you message")
+    name = StringField('Business Name *', 
+                        validators=[DataRequired(),Length(min=2, max=30)])
+    email = StringField('Email *', 
+                        validators=[DataRequired(), Email()])
     description = TextAreaField("Company description")
+    address1 = StringField('Address *', 
+                        validators=[DataRequired(),Length(min=2, max=30)])
+    address2 = StringField("Address line 2", validators=[Optional(), Length(min=2, max=30)])                        
+    address3 = StringField("Address line 3", validators=[Optional(), Length(min=2, max=30)])                        
+    county = SelectField('County *', 
+                        choices=counties,
+                        validators=[DataRequired()])
+    eircode = StringField('Eircode *', 
+                        validators=[DataRequired(),Length(min=2, max=30)])
+    thank_you_msg = TextAreaField("Thank you message")
 
     submit = SubmitField("Update account")
 

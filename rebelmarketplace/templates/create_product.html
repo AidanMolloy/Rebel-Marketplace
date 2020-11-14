@@ -6,69 +6,59 @@
         {{ form.hidden_tag() }} 
         <div>
             <div>
-            {{ form.name.label(class="token-class")}}
+            {{ form.name.label()}}
                 {% if form.name.errors %}
-                {{ form.name(class="token-class")}}
-                <div class="error">
+                {{ form.name()}}
                     {% for error in form.name.errors %}
-                    <span>{{ error }}</span>
+                    <span class="error">{{ error }}</span>
                     {% endfor %}
-                </div>
                 {% else %}
-                {{ form.name(class="token-class")}}
+                {{ form.name()}}
                 {% endif %}
             </div>
             <div>
-            {{ form.description.label(class="token-class")}}
+            {{ form.description.label()}}
             {% if form.description.errors %}
                 {{ form.description(class="token-class invalid")}}
-                <div class="error">
                 {% for error in form.description.errors %}
-                    <span>{{ error }}</span> 
+                    <span class="error">{{ error }}</span> 
                 {% endfor %}
-                </div>
             {% else %}
-                {{ form.description(class="token-class")}}
+                {{ form.description()}}
             {% endif %}
             </div>
             <div>
                 <div>
-                {{ form.price.label(class="token-class")}}
+                {{ form.price.label()}}
                     {% if form.price.errors %}
-                    {{ form.price(class="token-class")}}
-                    <div class="error">
+                    {{ form.price()}}
                         {% for error in form.price.errors %}
-                        <span>{{ error }}</span>
+                        <span class="error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                     {% else %}
-                    {{ form.price(class="token-class")}}
+                    {{ form.price()}}
                     {% endif %}
                 </div>
                 <div>
-                {{ form.quantity.label(class="token-class")}}
+                {{ form.quantity.label()}}
                 {% if form.quantity.errors %}
                     {{ form.quantity(class="token-class invalid")}}
-                    <div class="error">
                     {% for error in form.quantity.errors %}
-                        <span>{{ error }}</span> 
+                        <span class="error">{{ error }}</span> 
                     {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.quantity(class="token-class")}}
+                    {{ form.quantity()}}
                 {% endif %}
                 </div>
                 <div>
-                    {{ form.image.label(class="token-class")}}
+                    {{ form.image.label()}}
                     {% if form.image.errors %}
                         {{ form.image(class="token-class invalid")}}
-                        <div class="error">
                         {% for error in form.image.errors %}
-                            <span>{{ error }}</span> 
+                            <span class="error">{{ error }}</span> 
                         {% endfor %}
-                        </div>
                     {% else %}
-                        {{ form.image(class="token-class")}}
+                        {{ form.image()}}
                     {% endif %}
                     </div>
                 </div>

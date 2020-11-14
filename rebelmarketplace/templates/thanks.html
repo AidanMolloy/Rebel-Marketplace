@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <div>
-        Thank you for supporting <a href="{{ url_for('company', company_id=company.id) }}">{{ company.name}}</a>
-        <br>
-    </div>
-    <div>
-        <h4> Heres what they have to say</h4>
-        <p>
-            {{ company.thank_you_msg}}
-        </p>
-    </div>
+<h1>Thanks for your support!</h1>
+<br>
+<h2>"{{ company.thank_you_msg}}" - <a href="{{ url_for('company', company_id=company.id) }}">{{ company.name}}</a></h2>
 {% endblock content %}

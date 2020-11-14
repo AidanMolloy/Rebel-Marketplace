@@ -17,7 +17,7 @@
             <nav>
                 <ul>
                     <li><a href="{{ url_for('home') }}"><i class="fas fa-home"></i><p> Home</p></a></li>
-                    <li><a href="{{ url_for('catalog') }}"><i class="fas fa-stream"></i><p> Catalogue</p></a></li>
+                    <li><a href="{{ url_for('catalogue') }}"><i class="fas fa-stream"></i><p> Catalogue</p></a></li>
                     <!--<li><a href="{{ url_for('contact') }}">Contact</a></li>-->
                     {% if current_user.is_authenticated %}
                         <li><a href="{{ url_for('new_product') }}"><i class="fas fa-plus-square"></i><p> New Product</p></a></li>

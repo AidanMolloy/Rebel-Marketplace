@@ -90,11 +90,11 @@ def delete_product(product_id):
     return redirect(url_for("company", company_id=current_user.id))
 
 
-@app.route("/catalog/")
-def catalog():
+@app.route("/catalogue/")
+def catalogue():
     products = Product.query.all()
     
-    return render_template("catalog.html", products=products)
+    return render_template("catalogue.html", products=products)
 
 @app.route("/company/<int:company_id>")
 def company(company_id):

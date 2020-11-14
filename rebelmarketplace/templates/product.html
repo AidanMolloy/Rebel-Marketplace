@@ -15,12 +15,5 @@
             <p>Quanitity Available: {{ product.quantity}}</p>
         </div>
         <a class="buyNow" href="{{ url_for('buy', product_id=product.id) }}"><i class="fas fa-shopping-cart"></i> Buy Now <br> €{{ product.price}}</a>
-        {% if product.company == current_user %}
-            <div>
-                <form action="{{ url_for('delete_product', product_id=product.id) }}", method="POST">
-                    <input type="submit", value="Delete">
-                </form>
-            </div>
-        {% endif %}<br>
     </div>
 {% endblock content %}

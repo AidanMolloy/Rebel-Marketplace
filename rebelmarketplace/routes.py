@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, flash, redirect, abort
 from rebelmarketplace import app, db, bcyrpt
-from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm, BuyForm
+from rebelmarketplace.forms import RegistrationForm, LoginForm, ProductForm, UpdateAccountForm, BuyForm, UpdateProductForm
 from rebelmarketplace.models import Company, Product
 from flask_login import login_user, current_user, logout_user, login_required
 import os
@@ -52,7 +52,7 @@ def new_product():
         db.session.commit()
         flash("Product added successfully", "success")
         return redirect(url_for("account"))
-    return render_template("create_product.html", title="New Product", form=form)
+    return render_template("create_product.html", title="New Product", form=form)   
 
 @app.route("/product/<int:product_id>/update/", methods=["GET", "POST"])
 @login_required
@@ -60,7 +60,7 @@ def update_product(product_id):
     product = Product.query.get_or_404(product_id)
     if product.company != current_user:
         abort(403)
-    form = ProductForm()
+    form = UpdateProductForm()
     if form.validate_on_submit():
         product.name = form.name.data
         product.description = form.description.data
@@ -75,9 +75,9 @@ def update_product(product_id):
             form.name.data = product.name
             form.description.data = product.description
             form.price.data = product.price
-            form.quantity.data = product.quantity
+            form.quantity.data = product.quantity   
 
-    return render_template("create_product.html", title="Update Product", form=form)   
+    return render_template("Update_product.html", title="Update Product", form=form, product=product)   
 
 @app.route("/product/<int:product_id>/delete/", methods=["POST"])
 @login_required
@@ -87,7 +87,7 @@ def delete_product(product_id):
         abort(403)
     db.session.delete(product)
     db.session.commit()
-    flash("Your product has been deleted")
+    flash("Your product has been deleted", "success")
     return redirect(url_for("company", company_id=current_user.id))
 
 
@@ -157,6 +157,7 @@ def account():
             form.name.data = current_user.name
             form.email.data = current_user.email
             form.description.data = current_user.description
+            form.thank_you_msg.data = current_user.thank_you_msg
             form.address1.data = current_user.address1
             form.address2.data = current_user.address2
             form.address3.data = current_user.address3
@@ -174,7 +175,6 @@ def buy(product_id):
         db.session.commit()
     
         company = product.company
-        print("you bought this?")
         return render_template("thanks.html", title="Thanks", company=company)
 
     return render_template("buy.html", product=product, form=form)
